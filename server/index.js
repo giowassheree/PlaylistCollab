@@ -18,14 +18,16 @@ const io = new Server(server, {
 });
 
 
-app.use(cors());
+app.use(cors());        
 app.use(express.json());
 
+// Importing routes
 const playlistRoutes = require('./routes/playlists');
 app.use('/api/playlists', playlistRoutes);
 
 require('./sockets')(io);
 
+// starting the server
 const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
     console.log("Server is running on port ${PORT}!");
