@@ -27,7 +27,7 @@ router.get('/:id', async (req, res) => {
         );
 
         if (playlist.rows.length === 0) {
-            return res.status(404).json({ error: 'Playlust not found' });
+            return res.status(404).json({ error: 'Playlist not found' });
         }
 
         // Get songs for this playlist
@@ -46,6 +46,28 @@ router.get('/:id', async (req, res) => {
         });
     } catch (err) {
         console.error(err);
-        res.status(500), json({ error: 'Server error '});
+        res.status(500).json({ error: 'Server error '});
     }
 });
+
+
+// POST /api/playlists - create a new playlist
+router.post('/', async (req, res) => {
+    try {
+        const { name, owner_id } = req.body
+
+        const result = await pool.query(
+            'INSERT INTO playlists (name, owner_id) VALUES ($1, $2) RETURNING *',
+            [name, owner_id]
+        );
+
+        res.status(201).json(result.rows[0]);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
+
+
+module.exports = router;

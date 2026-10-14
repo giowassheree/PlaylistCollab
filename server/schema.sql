@@ -29,6 +29,8 @@ CREATE TABLE songs (
 CREATE TABLE playlist_songs (
     playlist_id INT REFERENCES playlists(id) ON DELETE CASCADE,
     song_id INT REFERENCES songs(id) ON DELETE CASCADE,
+    position INT NOT NULL,
+    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (playlist_id, song_id)
 );
 
