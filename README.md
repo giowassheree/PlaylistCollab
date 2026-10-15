@@ -4,7 +4,7 @@ Users can collab and build music playlists with live updates.
 ### Current Tech Stack
 - Node
 - PostgreSQL
-- React
+- TypeScript with Vite
 - Javascript
 
 ### Features to be added:
