@@ -6,6 +6,23 @@ body {
     background-color: white;
 }
 
+.container {
+    display: grid;
+    grid-template-columns: 80px 200px auto 80px;
+    background-color: dodgeblue;
+    padding: 10px;
+}
+
+.container div {
+    display: flex;
+    align-items: center;
+    background-color: #f1f1f1;
+    border: 1px solid black;
+    padding: 10px;
+    font-size: 30px;
+    text-align: center;
+}
+
 .header {
     position: fixed;
     top: 0;
@@ -14,6 +31,17 @@ body {
     
 }
 
+/*hero {
+    background: grey;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+*/
 .nav{
     max-width: 1200px;
     margin: 0 auto;
