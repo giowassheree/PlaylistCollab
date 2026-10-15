@@ -1,3 +1,9 @@
+.sidebar { grid-area: sidebar; }
+.main { grid-area: main; }
+.panel { grid-area: panel; }
+.player { grid-area: player; }
+
+
 .nav {
     color: black;
 }
@@ -8,9 +14,13 @@ body {
 
 .container {
     display: grid;
-    grid-template-columns: 80px 200px auto 80px;
-    background-color: dodgeblue;
-    padding: 10px;
+    grid-template-columns: 240px 1fr 280px;
+    grid-template-rows: 1fr 80px;
+    grid-template-areas:
+        "sidebar main  panel"
+        "player  player  player";
+    height: 100vh;
+    gap: 10px;
 }
 
 .container div {
@@ -24,15 +34,18 @@ body {
 }
 
 .header {
-    position: fixed;
+    grid-template-rows: auto 1fr 80px;
+    grid-template-areas:
+        "header"  "header"  "header";
     top: 0;
     width: 100%;
     padding: 2rem 0;
-    
 }
 
-/*hero {
-    background: grey;
+.hero {
+    display: flex;
+    flex-direction: column;
+    background: black;
     text-align: center;
 }
 
@@ -41,7 +54,7 @@ body {
     margin-bottom: 1rem;
     color: white;
 }
-*/
+
 .nav{
     max-width: 1200px;
     margin: 0 auto;
@@ -56,4 +69,9 @@ body {
     list-style: none;
     display: flex;
     gap: 2rem;
+}
+
+.sidebar,.main,.panel {
+    overflow-y: auto;
+    min-height: 0;
 }
